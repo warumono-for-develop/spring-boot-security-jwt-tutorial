@@ -1,0 +1,29 @@
+server:
+  context-path: /
+  port: 9090
+
+spring:
+  profiles: default
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:securitydb
+    username: sa
+    password: 
+    data: classpath*:data.sql
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+logging:
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n'
+#    file: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n'
+#  file: /your/directory/path/log.log
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework: ERROR
+    com.warumono: ALL
